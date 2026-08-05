@@ -1,0 +1,7 @@
+Modificación de esquema: npx prisma migrate dev --name nombre_del_cambio
+/*
+router.post("/create", createUser, verifyToken, verifyAdmin, (req, res) => {
+  res.json({
+    message: "Solo administradores",
+  });
+});*/

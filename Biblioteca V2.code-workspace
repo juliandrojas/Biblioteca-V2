@@ -1,0 +1,82 @@
+{
+  "folders": [
+    {
+      "name": "🎨 FRONTEND (React)",
+      "path": "client",
+    },
+    {
+      "name": "⚙️ BACKEND (Express)",
+      "path": "server",
+    },
+    {
+      "name": "📁 RAÍZ DEL PROYECTO",
+      "path": ".",
+    },
+  ],
+  "settings": {
+    // --- APARIENCIA Y TEMA DEL WORKSPACE ---
+    "workbench.colorTheme": "Tokyo Night", // Cambia esto por el nombre exacto de tu tema favorito
+    "workbench.colorCustomizations": {
+      "activityBar.badgeBackground": "#38bdf8"
+    },
+
+    // --- FORMATO Y CALIDAD DE CÓDIGO ---
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+    },
+
+    // --- MANEJO DE ARCHIVOS E IGNORADOS ---
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/node_modules": false,
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/.next": true,
+      "**/coverage": true,
+    },
+
+    // --- TERMINAL INTEGRADA ---
+    "terminal.integrated.cwd": "${workspaceFolder}",
+
+    // --- AJUSTES DE EDITOR ---
+    "editor.tabSize": 2,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    // --- CONFIGURACIÓN DE LENGUAJES ---
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "conventionalCommits.scopes": ["footer"],
+    "editor.cursorBlinking": "smooth",
+  },
+
+  // --- EXTENSIONES RECOMENDADAS ---
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss",
+      "dsznajder.es7-react-js-snippets",
+      "eamodio.gitlens",
+      "humao.rest-client",
+    ],
+  },
+}
