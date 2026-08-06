@@ -1,8 +1,7 @@
-import { getAllBooks } from "../../../server/controllers/book.controller";
 import api from "../config/axios";
 
 export function getBooks() {
-  return api.get("/books", getAllBooks);
+  return api.get("/books");
 }
 
 export function createBook(bookData) {
