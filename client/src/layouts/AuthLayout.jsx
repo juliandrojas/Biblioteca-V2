@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../../../../../Biblioteca/client/src/components/Navbar";
-import Footer from "../common/Footer";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function AuthLayout() {
   const navLinks = [{ text: "Volver a Inicio", to: "/" }];
