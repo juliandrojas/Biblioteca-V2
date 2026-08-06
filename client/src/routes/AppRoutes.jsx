@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AdminLayout from "../components/layouts/AdminLayout";
-import AuthLayout from "../components/layouts/AuthLayout";
-import PublicLayout from "../components/layouts/PublicLayout";
+import AdminLayout from "../layouts/AdminLayout";
+import AuthLayout from "../layouts/AuthLayout";
+import PublicLayout from "../layouts/PublicLayout";
 import Books from "../pages/admin/Books";
 import Categories from "../pages/admin/Categories";
 import Dashboard from "../pages/admin/Dashboard";
