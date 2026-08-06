@@ -5,7 +5,7 @@ import Footer from "../common/Footer";
 export default function PublicLayout() {
   const navLinks = [
     { text: "Inicio", to: "/" },
-    { text: "Libros", to: "/#libros" },
+    { text: "Libros", to: "/#books" },
     { text: "Préstamos", to: "/#prestamos" },
     { text: "Ingresar", to: "/login" },
   ];
