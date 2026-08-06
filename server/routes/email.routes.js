@@ -7,10 +7,7 @@ const router = Router();
 
 router.get("/test", async (req, res) => {
   try {
-    const response = await sendWelcomeEmail(
-      "juliandrojasa140201@gmail.com",
-      "Julián",
-    );
+    await sendWelcomeEmail("juliandra140201@gmail.com", "Julián");
 
     res.json(response);
   } catch (error) {
