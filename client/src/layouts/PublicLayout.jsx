@@ -13,7 +13,7 @@ export default function PublicLayout() {
     <>
       <div className="d-flex flex-column min-vh-100">
         <Navbar brandName="Public Layout" links={navLinks} />
-        <main className="container flex-grow-1 py-4">
+        <main className="flex-grow-1">
           <Outlet />
         </main>
         <Footer />
