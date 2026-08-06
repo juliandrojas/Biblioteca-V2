@@ -6,8 +6,8 @@ import morgan from "morgan";
 // Import routes
 import booksRoutes from "./routes/book.routes.js";
 import categoriesRoutes from "./routes/category.routes.js";
-//import indexRoutes from "./routes/index.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
+import indexRoutes from "./routes/index.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 dotenv.config();
@@ -19,8 +19,7 @@ app.use(morgan("dev"));
 app.use(cors());
 
 // Use Routes
-//app.use("/", indexRoutes);
-
+app.use("/", indexRoutes);
 app.use("/books", booksRoutes);
 app.use("/categories", categoriesRoutes);
 app.use("/users", userRoutes);
