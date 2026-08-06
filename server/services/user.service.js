@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import prisma from "../config/prisma.js";
+import { sendWelcomeEmail } from "./email.service.js";
 
 // Iniciar sesión
 export async function login(username, password) {
@@ -89,6 +90,7 @@ export async function createUser(userData) {
       password: passwordHash,
     },
   });
+  await sendWelcomeEmail(user.email, user.name);
 }
 
 // Actualizar usuario
