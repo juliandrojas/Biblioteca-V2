@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { logout } from "../../services/authService";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { logout } from "../services/authService";
 
 export default function AdminLayout() {
   const navigate = useNavigate();

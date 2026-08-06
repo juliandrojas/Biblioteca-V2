@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Modal from "../../components/ui/Modal";
 import {
   createCategory,
   deleteCategory,
@@ -138,7 +137,7 @@ export default function Categories() {
 
       {/* Modal */}
 
-      <Modal
+      {/* <Modal
         show={showModal}
         onClose={() => {
           setShowModal(false);
@@ -173,7 +172,7 @@ export default function Categories() {
           value={newCategory}
           onChange={(e) => setNewCategory(e.target.value)}
         />
-      </Modal>
+      </Modal> */}
 
       {/* Listado */}
 

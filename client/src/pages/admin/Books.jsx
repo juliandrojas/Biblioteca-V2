@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Modal from "../../components/ui/Modal";
 import { createBook, getBooks } from "../../services/bookService";
 import { getCategories } from "../../services/categoryService";
 export default function Books() {
@@ -167,7 +166,7 @@ export default function Books() {
       )}
 
       {/* Modal */}
-      <Modal
+      {/* <Modal
         show={showModal}
         onClose={handleCloseModal}
         title="Registrar libro"
@@ -285,7 +284,7 @@ export default function Books() {
             </select>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

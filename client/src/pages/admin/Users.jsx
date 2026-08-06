@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Modal from "../../components/ui/Modal";
 import { createUser, getUsers, updateUser } from "../../services/userService";
 
 export default function Users() {
@@ -233,7 +232,7 @@ export default function Users() {
       )}
 
       {/* Modal */}
-      <Modal
+      {/* <Modal
         show={showModal}
         onClose={handleCloseModal}
         title={selectedUser ? "Editar usuario" : "Registrar usuario"}
@@ -332,7 +331,7 @@ export default function Users() {
             </select>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
