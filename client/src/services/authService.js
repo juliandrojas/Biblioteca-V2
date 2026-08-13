@@ -1,4 +1,7 @@
 import api from "../config/axios";
+export function register(data) {
+  return api.post("/users/register", data);
+}
 export function login(credentials) {
   return api.post("/users/login", credentials);
 }
