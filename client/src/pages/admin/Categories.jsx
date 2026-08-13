@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Modal from "../../components/Modal";
 import {
   createCategory,
   deleteCategory,
@@ -7,10 +8,15 @@ import {
 } from "../../services/categoryService";
 
 export default function Categories() {
+  // ==========================
+  // Estados
+  // ==========================
   const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   // ==========================
   // Obtener categorías
@@ -18,6 +24,7 @@ export default function Categories() {
   const fetchCategories = async () => {
     try {
       const response = await getCategories();
+
       setCategories(response.data);
     } catch (error) {
       console.error(error);
@@ -110,9 +117,23 @@ export default function Categories() {
     }
   };
 
+  // ==========================
+  // Filtrar categorías
+  // ==========================
+  const filteredCategories =
+    searchTerm.trim() === ""
+      ? categories
+      : categories.filter((category) => {
+          const search = searchTerm.toLowerCase().trim();
+
+          return category.name?.toLowerCase().includes(search);
+        });
+
   return (
     <div className="container py-4">
-      {/* Encabezado */}
+      {/* ==========================
+          Encabezado
+      ========================== */}
       <div className="d-flex justify-content-between align-items-center flex-wrap mb-4">
         <div>
           <h1 className="fw-bold">Categorías</h1>
@@ -128,16 +149,40 @@ export default function Categories() {
         </button>
       </div>
 
-      {/* Estadística */}
-      <div className="alert alert-light border shadow-sm mb-4">
-        <i className="bi bi-collection-fill me-2 text-primary"></i>
-        Total de categorías:
-        <strong> {categories.length}</strong>
+      {/* ==========================
+          Estadística y búsqueda
+      ========================== */}
+      <div className="row g-4 mb-4">
+        {/* Total de categorías */}
+        <div className="col-md-6">
+          <div className="alert alert-light border shadow-sm rounded-3 h-100 mb-0 d-flex align-items-center">
+            <i className="bi bi-collection-fill me-2 text-primary"></i>
+            Total de categorías:
+            <strong className="ms-1">{categories.length}</strong>
+          </div>
+        </div>
+
+        {/* Buscador */}
+        <div className="col-md-6">
+          <div className="card shadow-sm h-100">
+            <div className="card-body d-flex align-items-center">
+              <input
+                type="search"
+                className="form-control"
+                placeholder="Buscar categoría..."
+                aria-label="Buscar categoría"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Modal */}
-
-      {/* <Modal
+      {/* ==========================
+          Modal
+      ========================== */}
+      <Modal
         show={showModal}
         onClose={() => {
           setShowModal(false);
@@ -148,6 +193,7 @@ export default function Categories() {
         footer={
           <>
             <button
+              type="button"
               className="btn btn-secondary"
               onClick={() => {
                 setShowModal(false);
@@ -158,7 +204,11 @@ export default function Categories() {
               Cancelar
             </button>
 
-            <button className="btn btn-success" onClick={handleSaveCategory}>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handleSaveCategory}
+            >
               <i className="bi bi-check-circle me-2"></i>
 
               {selectedCategory ? "Actualizar" : "Guardar"}
@@ -167,29 +217,46 @@ export default function Categories() {
         }
       >
         <input
+          type="text"
           className="form-control"
           placeholder="Nombre de la categoría"
           value={newCategory}
           onChange={(e) => setNewCategory(e.target.value)}
         />
-      </Modal> */}
+      </Modal>
 
-      {/* Listado */}
+      {/* ==========================
+          Listado
+      ========================== */}
 
+      {/* No hay categorías */}
       {categories.length === 0 ? (
         <div className="text-center py-5">
           <i className="bi bi-folder-x display-1 text-secondary"></i>
 
-          <h3>No hay categorías</h3>
+          <h3 className="mt-3">No hay categorías</h3>
 
           <p className="text-muted">Crea la primera categoría para comenzar.</p>
         </div>
+      ) : filteredCategories.length === 0 ? (
+        /* No hay resultados */
+        <div className="text-center py-5">
+          <i className="bi bi-search display-1 text-secondary"></i>
+
+          <h3 className="mt-3">No se encontraron categorías</h3>
+
+          <p className="text-muted">
+            No hay categorías que coincidan con "{searchTerm}".
+          </p>
+        </div>
       ) : (
+        /* Tarjetas */
         <div className="row g-4">
-          {categories.map((category) => (
+          {filteredCategories.map((category) => (
             <div className="col-md-4" key={category.id}>
               <div className="card category-card border-0 shadow-sm rounded-4 h-100">
                 <div className="card-body text-center">
+                  {/* Icono */}
                   <div
                     className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
                     style={{
@@ -200,20 +267,26 @@ export default function Categories() {
                     <i className="bi bi-bookmark-fill fs-2 text-primary"></i>
                   </div>
 
+                  {/* Nombre */}
                   <h5 className="fw-bold">{category.name}</h5>
 
                   <p className="text-muted small mb-4">Categoría disponible</p>
 
+                  {/* Acciones */}
                   <div className="d-flex justify-content-center gap-2">
                     <button
+                      type="button"
                       className="btn btn-outline-primary btn-sm"
+                      title="Editar"
                       onClick={() => handleEdit(category)}
                     >
                       <i className="bi bi-pencil"></i>
                     </button>
 
                     <button
+                      type="button"
                       className="btn btn-outline-danger btn-sm"
+                      title="Eliminar"
                       onClick={() => handleDelete(category.id)}
                     >
                       <i className="bi bi-trash"></i>
