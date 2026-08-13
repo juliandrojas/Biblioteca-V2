@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 export default function PublicLayout() {
   const navLinks = [
-    { text: "Inicio", to: "/" },
+    { text: "Inicio", to: "/#hero" },
     { text: "Libros", to: "/#books" },
     { text: "Préstamos", to: "/#prestamos" },
     { text: "Ingresar", to: "/login" },

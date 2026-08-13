@@ -1,6 +1,6 @@
 export default function BooksSection({ books }) {
   return (
-    <div className="container mt-5" id="">
+    <div className="container mt-5" id="books">
       <h2 className="fw-bold text-center mb-4">Últimos libros</h2>
 
       <div className="row g-4">
