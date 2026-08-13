@@ -1,5 +1,21 @@
 {
+  "name": "biblioteca-v2",
+  "version": "1.0.0",
+  "description": "Sistema de gestión de biblioteca Full Stack con React, Express y PostgreSQL",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
+    "build": "cd client && npm run build && cd ../server && npx prisma generate",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "prisma:migrate": "cd server && npx prisma migrate dev",
+    "prisma:generate": "cd server && npx prisma generate",
+    "prisma:push": "cd server && npx prisma db push",
+    "prisma:seed": "cd server && npx prisma db seed"
+  },
   "dependencies": {
     "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
   }
 }

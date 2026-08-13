@@ -6,7 +6,7 @@ async function resetAdmin() {
 
   await prisma.user.update({
     where: {
-      username: "juliand.rojas", // o el username de tu administrador
+      username: "admin", // o el username de tu administrador
     },
     data: {
       password,
